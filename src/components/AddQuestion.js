@@ -8,13 +8,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
+import Switch from "@material-ui/core/Switch";
 
 const AddQuestion = () => {
-  // let answer_model = { answer: "", isValid: false };
   const classes = useStyles();
   const [values, setValues] = React.useState({
     answered_types: "",
-    answers_inputs: [{}, {}] // TODO: meterlo con ids
+    answers_inputs: [
+      { answer: "", isValid: false, saved: true },
+      { answer: "", isValid: false, saved: true }
+    ]
   });
 
   const inputLabel = React.useRef(null);
@@ -29,17 +32,17 @@ const AddQuestion = () => {
       [event.target.name]: event.target.value
     }));
   }
-  const handleAnswersInputs = (e, index) => {
-    let inputValue = e.target.value;
-    setValues(oldValues => {
-      let _arr = [...oldValues.answers_inputs];
-      _arr[index] = { answer: inputValue, isValid: false };
-      return {
-        ...oldValues,
-        answers_inputs: _arr
-      };
-    });
-  };
+  // const handleAnswersInputs = (e, index) => {
+  //   let inputValue = e.target.value;
+  //   setValues(oldValues => {
+  //     let _arr = [...oldValues.answers_inputs];
+  //     _arr[index] = { answer: inputValue, isValid: false, isEditing: false };
+  //     return {
+  //       ...oldValues,
+  //       answers_inputs: _arr
+  //     };
+  //   });
+  // };
 
   const addNewAnswerLine = () => {
     setValues(oldValues => {
@@ -50,11 +53,70 @@ const AddQuestion = () => {
     });
   };
 
+  const showAnswerInputEditor = index => {
+    setValues(oldValues => {
+      return {
+        ...oldValues,
+        answers_inputs: oldValues.answers_inputs.map((elm, i) => {
+          if (i !== index) elm.isEditing = false;
+          else elm.isEditing = true;
+          return elm;
+        })
+      };
+    });
+  };
+
+  const toggleAnswerInputValidity = index => {
+    setValues(oldValues => {
+      let _arr = [...oldValues.answers_inputs];
+      _arr[index].isValid = !_arr[index].isValid;
+      return {
+        ...oldValues,
+        answers_inputs: _arr
+      };
+    });
+  };
+
+  const saveAnswer = index => {
+    // TODO: call API
+    setValues(oldValues => {
+      let _arr = [...oldValues.answers_inputs];
+      _arr[index].saved = true;
+      _arr[index].isEditing = false;
+      return {
+        ...oldValues,
+        answers_inputs: _arr
+      };
+    });
+  };
+
+  const deleteAnswer = index => {
+    // TODO: call API
+    setValues(oldValues => {
+      let _arr = [...oldValues.answers_inputs];
+      _arr.splice(index, 1);
+      return {
+        ...oldValues,
+        answers_inputs: _arr
+      };
+    });
+  };
+
+  const onChangeCode = (index, text) => {
+    setValues(oldValues => {
+      let _arr = [...oldValues.answers_inputs];
+      _arr[index].answer = text;
+      return {
+        ...oldValues,
+        answers_inputs: _arr
+      };
+    });
+  };
   return (
     <div style={{ width: "50%" }}>
       {/* 1. Question editor respuestas: - tipos: - respuesta Multiple - code - */}
       <h1 style={{ border: "1px solid" }}>Question editor</h1>
-      <CodeEditor width={98} />
+      <CodeEditor placeholder="# Aquí va el Markdown" width={98} />
 
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel ref={inputLabel} htmlFor="answered_types">
@@ -79,13 +141,42 @@ const AddQuestion = () => {
             <p>Answers: </p>
             {values.answers_inputs.map((answer_input, index) => (
               <div key={index}>
+                {/* TODO: Set the current answer bold os strong ...  */}
+                {/* {!answer_input.isEditing && ( */}
                 <TextField
                   label="Name"
+                  disabled={answer_input.isEditing}
                   className={classes.textField}
-                  value={answer_input.name}
-                  onChange={e => handleAnswersInputs(e, index)}
+                  value={answer_input.answer}
+                  // onChange={e => handleAnswersInputs(e, index)}
+                  onClick={() => showAnswerInputEditor(index)}
                   margin="normal"
                 />
+                {/* )} */}
+                {answer_input.isEditing && (
+                  <>
+                    <CodeEditor
+                      width={98}
+                      onChangeCode={onChangeCode}
+                      id={index}
+                    />
+                    <div>
+                      <Switch
+                        checked={answer_input.isValid}
+                        onChange={() => toggleAnswerInputValidity(index)}
+                        value={answer_input.isValid}
+                        color="primary"
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                      />
+                      <button onClick={() => saveAnswer(index)}>
+                        Save Answer
+                      </button>
+                      <button onClick={() => deleteAnswer(index)}>
+                        Delete Answer
+                      </button>
+                    </div>
+                  </>
+                )}
                 {/* TODO: the <div /> */}
               </div>
             ))}

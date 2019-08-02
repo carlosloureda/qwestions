@@ -3,12 +3,12 @@ import AceEditor from "react-ace";
 import "brace/mode/markdown";
 import "brace/theme/twilight";
 
-const CodeEditor = ({ width, height }) => {
-  const [code, setCode] = React.useState("# Aquí va el Markdown");
+const CodeEditor = ({ placeholder, width, height, onChangeCode, id }) => {
+  const [code, setCode] = React.useState(placeholder);
   const onChange = newValue => {
     setCode(newValue);
+    onChangeCode(id, newValue);
   };
-  console.log("width: ", width);
   return (
     <div style={classes.container}>
       <div
