@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
 
 import { QuestionContext } from "../Context";
 
@@ -115,12 +116,22 @@ const AddQuestion = () => {
                         color="primary"
                         inputProps={{ "aria-label": "primary checkbox" }}
                       />
-                      <button onClick={() => saveAnswer(index)}>
+                      <Button
+                        onClick={() => saveAnswer(index)}
+                        variant="contained"
+                        className={classes.button}
+                        color="primary"
+                      >
                         Save Answer
-                      </button>
-                      <button onClick={() => deleteAnswer(index)}>
+                      </Button>
+                      <Button
+                        onClick={() => deleteAnswer(index)}
+                        variant="contained"
+                        className={classes.button}
+                        color="secondary"
+                      >
                         Delete Answer
-                      </button>
+                      </Button>
                     </div>
                   </>
                 )}
@@ -131,7 +142,13 @@ const AddQuestion = () => {
 
             {/* TODO: the <div /> */}
             <div />
-            <button onClick={addNewAnswerLine}>Add Answer</button>
+            <Button
+              onClick={addNewAnswerLine}
+              variant="contained"
+              className={classes.button}
+            >
+              Add Answer
+            </Button>
           </div>
         )}
         {answered_types === "code" && (
@@ -143,26 +160,41 @@ const AddQuestion = () => {
       <Suspense fallback={<div>Loading Question preview ...</div>}>
         <QuestionPreview values={state} />
       </Suspense>
-      {/* input - TextArea */}
       {/*
-        -  Titulo de la pregunta, va en el Markdown:
-            - Label o titulo
-            - Debajo editor
-            - Todo rodeado de un borde
-        - Respuestas (configuracion), Label con border sobre todo lo de abajo
-            - Tipo de pregunta:
-                - Multiple Choice (MC)
-                - Open Ended (OE)
-            - Respuestas:
-                - SI MC: answer ... que abre un markdown y encima se escribe
-                - SI OE:
-                    - Placeholder text
-                    - Answer type:  Code, Input or TextArea
         - Extras:
             - Explicacion de la pregunta
-            - Preview
-            - Botones para guardar, cancelar o borrar
         */}
+      <div>
+        <Button
+          onClick={addNewAnswerLine}
+          variant="contained"
+          className={classes.button}
+          // color="green"
+          style={{
+            backgroundColor: "green"
+          }}
+        >
+          Save Question
+        </Button>
+        <Button
+          onClick={addNewAnswerLine}
+          variant="contained"
+          className={classes.button}
+          style={{
+            backgroundColor: "orange"
+          }}
+        >
+          Cancel Changes
+        </Button>
+        <Button
+          onClick={addNewAnswerLine}
+          variant="contained"
+          className={classes.button}
+          color="secondary"
+        >
+          Delete Question
+        </Button>
+      </div>
     </div>
   );
 };
