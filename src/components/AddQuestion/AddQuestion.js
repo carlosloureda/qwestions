@@ -1,5 +1,5 @@
 import React from "react";
-import CodeEditor from "./Editor/CodeEditor";
+import CodeEditor from "../Editor/CodeEditor";
 
 import { makeStyles } from "@material-ui/core/styles";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -9,11 +9,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
-import ReactMarkdown from "react-markdown";
-import CodeBlock from "./Editor/CodeBlock";
 
-import { QuestionContext } from "./Context";
-
+import { QuestionContext } from "../Context";
+import QuestionPreview from "./QuestionPreview";
+import CodeAnswers from "./CodeAnswers";
 // https://medium.com/@seantheurgel/react-hooks-as-state-management-usecontext-useeffect-usereducer-a75472a862fe
 
 const AddQuestion = () => {
@@ -156,125 +155,6 @@ const AddQuestion = () => {
             - Preview
             - Botones para guardar, cancelar o borrar
         */}
-    </div>
-  );
-};
-
-const CodeAnswers = ({ initialState }) => {
-  const classes = useStyles();
-  const { state, dispatch } = React.useContext(QuestionContext);
-  const { theme, codeLanguage } = state;
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
-
-  const onCodingLanguageChange = lang => {
-    dispatch({ type: "set_coding_language", lang });
-  };
-  const onThemeChange = theme => {
-    dispatch({ type: "set_theme", theme });
-  };
-
-  const codingLanguageOptions = [
-    "javascript",
-    "java",
-    "python",
-    "xml",
-    "ruby",
-    "sass",
-    "markdown",
-    "mysql",
-    "json",
-    "html",
-    "handlebars",
-    "golang",
-    "csharp",
-    "elixir",
-    "typescript",
-    "css"
-  ];
-  const themes = [
-    "monokai",
-    "github",
-    "tomorrow",
-    "kuroir",
-    "twilight",
-    "xcode",
-    "textmate",
-    "terminal"
-  ];
-  return (
-    <React.Fragment>
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="coding_languages">
-          Coding language
-        </InputLabel>
-        <Select
-          value={codeLanguage}
-          onChange={e => onCodingLanguageChange(e.target.value)}
-          input={
-            <OutlinedInput labelWidth={labelWidth} name="coding_languages" />
-          }
-        >
-          {codingLanguageOptions.map(option => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="themes">
-          Themes
-        </InputLabel>
-        <Select
-          value={theme}
-          onChange={e => onThemeChange(e.target.value)}
-          input={<OutlinedInput labelWidth={labelWidth} name="themes" />}
-        >
-          {themes.map(option => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </React.Fragment>
-  );
-};
-const QuestionPreview = props => {
-  const { answered_types, question, theme, codeLanguage } = props.values;
-
-  return (
-    <div>
-      <h2>Preview</h2>
-      <div style={{ width: "50%" }}>
-        <div>
-          <ReactMarkdown
-            source={question}
-            renderers={{ question: CodeBlock }}
-            escapeHtml={false}
-          />
-        </div>
-      </div>
-      {answered_types === "textarea" && (
-        // <div>Mostrar textarea</div>
-        <TextField
-          label="Answer"
-          type="text"
-          value={""}
-          multiline={true}
-          disabled={true}
-        />
-      )}
-      {answered_types === "input" && (
-        <TextField label="Answer" type="text" value={""} disabled={true} />
-      )}
-      {answered_types === "code" && (
-        <CodeEditor width={98} theme={theme} language={codeLanguage} />
-      )}
     </div>
   );
 };

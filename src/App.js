@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./App.css";
-import AddQuestion from "./components/AddQuestion";
+import AddQuestion from "./components/AddQuestion/AddQuestion";
 import { QuestionProvider } from "./components/Context";
 
 function App() {
