@@ -100,6 +100,7 @@ const AddQuestion = () => {
                 {answer_input.isEditing && (
                   <>
                     <CodeEditor
+                      placeholder={answer_input.answer}
                       width={98}
                       onChangeCode={onChangeCode}
                       id={index}

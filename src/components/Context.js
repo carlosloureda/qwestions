@@ -17,7 +17,14 @@ const reducer = (state, action) => {
   } else if (action.type === "add_new_answer_input") {
     return {
       ...state,
-      answers_inputs: state.answers_inputs.concat([{}])
+      answers_inputs: state.answers_inputs.concat([
+        {
+          answer: "",
+          isValid: false,
+          saved: true,
+          id: state.answers_inputs.length + 1
+        }
+      ])
     };
   } else if (action.type === "show_answer_editor") {
     return {
@@ -82,8 +89,8 @@ const initialState = {
   question: "# Aquí va el Markdown",
   answered_types: "", // POSIBLE_ANSWER_TYPES
   answers_inputs: [
-    { answer: "", isValid: false, saved: true },
-    { answer: "", isValid: false, saved: true }
+    { answer: "", isValid: false, saved: true, id: 1 },
+    { answer: "", isValid: false, saved: true, id: 2 }
   ],
   theme: "",
   codeLanguage: ""

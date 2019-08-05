@@ -3,26 +3,14 @@ import React from "react";
 import "./App.css";
 import AddQuestion from "./components/AddQuestion/AddQuestion";
 import { QuestionProvider } from "./components/Context";
+// import CodeEditor2 from "./components/Editor/CodeEditor_2";
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       <QuestionProvider>
         <AddQuestion />
+        {/* <CodeEditor2 /> */}
       </QuestionProvider>
     </div>
   );

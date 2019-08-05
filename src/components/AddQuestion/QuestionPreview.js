@@ -14,14 +14,15 @@ const QuestionPreview = props => {
     answers_inputs
   } = props.values;
 
+  console.log("answered_types: ", answered_types);
   return (
     <div>
       <h2>Preview</h2>
-      <div style={{ width: "50%" }}>
+      <div style={{ width: "100%" }}>
         <div>
           <ReactMarkdown
             source={question}
-            renderers={{ question: CodeBlock }}
+            renderers={{ code: CodeBlock }}
             escapeHtml={false}
           />
         </div>
@@ -43,11 +44,11 @@ const QuestionPreview = props => {
         <CodeEditor width={98} theme={theme} language={codeLanguage} />
       )}
       {answered_types === "mutiple_choice" &&
-        answers_inputs.map((index, answer) => (
+        answers_inputs.map((answer, index) => (
           <div key={index}>
             <ReactMarkdown
               source={answer.answer}
-              renderers={{ question: CodeBlock }}
+              renderers={{ code: CodeBlock }}
               escapeHtml={false}
             />
           </div>

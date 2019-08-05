@@ -5,7 +5,7 @@ import "brace/theme/twilight";
 import ReactMarkdown from "react-markdown";
 import CodeBlock from "./CodeBlock";
 
-const CodeEditor = () => {
+const CodeEditor2 = () => {
   const [code, setCode] = React.useState("# Aquí va el Markdown");
   const onChange = newValue => {
     setCode(newValue);
@@ -52,4 +52,4 @@ const classes = {
   }
 };
 
-export default CodeEditor;
+export default CodeEditor2;
