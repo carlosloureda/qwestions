@@ -2,6 +2,7 @@ import React from "react";
 
 import "./App.css";
 import AddQuestion from "./components/AddQuestion";
+import { QuestionProvider } from "./components/Context";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <AddQuestion />
+      <QuestionProvider>
+        <AddQuestion />
+      </QuestionProvider>
     </div>
   );
 }
