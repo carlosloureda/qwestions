@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import CodeEditor from "../Editor/CodeEditor";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,9 +11,11 @@ import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 
 import { QuestionContext } from "../Context";
-import QuestionPreview from "./QuestionPreview";
-import CodeAnswers from "./CodeAnswers";
+
 // https://medium.com/@seantheurgel/react-hooks-as-state-management-usecontext-useeffect-usereducer-a75472a862fe
+
+const QuestionPreview = React.lazy(() => import("./QuestionPreview"));
+const CodeAnswers = React.lazy(() => import("./CodeAnswers"));
 
 const AddQuestion = () => {
   const classes = useStyles();
@@ -132,10 +134,15 @@ const AddQuestion = () => {
             <button onClick={addNewAnswerLine}>Add Answer</button>
           </div>
         )}
-        {answered_types === "code" && <CodeAnswers initialState={state} />}
+        {answered_types === "code" && (
+          <Suspense fallback={<div>Loading Question preview ...</div>}>
+            <CodeAnswers initialState={state} />
+          </Suspense>
+        )}
       </div>
-
-      <QuestionPreview values={state} />
+      <Suspense fallback={<div>Loading Question preview ...</div>}>
+        <QuestionPreview values={state} />
+      </Suspense>
       {/* input - TextArea */}
       {/*
         -  Titulo de la pregunta, va en el Markdown:
