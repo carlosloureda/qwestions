@@ -19,7 +19,7 @@ type Question {
   quiz: [Quiz]! @scalarList(strategy: RELATION)
   title: String!
   right_answer: [String]! @scalarList(strategy: RELATION)
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }

@@ -218,7 +218,7 @@ type Question {
   quiz(where: QuizWhereInput, orderBy: QuizOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Quiz!]
   title: String!
   right_answer: [String!]!
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -234,7 +234,7 @@ input QuestionCreateInput {
   quiz: QuizCreateManyInput
   title: String!
   right_answer: QuestionCreateright_answerInput
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -258,8 +258,8 @@ enum QuestionOrderByInput {
   id_DESC
   title_ASC
   title_DESC
-  anwer_type_ASC
-  anwer_type_DESC
+  answer_type_ASC
+  answer_type_DESC
   theme_ASC
   theme_DESC
   language_code_ASC
@@ -270,7 +270,7 @@ type QuestionPreviousValues {
   id: ID!
   title: String!
   right_answer: [String!]!
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -304,20 +304,20 @@ input QuestionScalarWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  anwer_type: String
-  anwer_type_not: String
-  anwer_type_in: [String!]
-  anwer_type_not_in: [String!]
-  anwer_type_lt: String
-  anwer_type_lte: String
-  anwer_type_gt: String
-  anwer_type_gte: String
-  anwer_type_contains: String
-  anwer_type_not_contains: String
-  anwer_type_starts_with: String
-  anwer_type_not_starts_with: String
-  anwer_type_ends_with: String
-  anwer_type_not_ends_with: String
+  answer_type: String
+  answer_type_not: String
+  answer_type_in: [String!]
+  answer_type_not_in: [String!]
+  answer_type_lt: String
+  answer_type_lte: String
+  answer_type_gt: String
+  answer_type_gte: String
+  answer_type_contains: String
+  answer_type_not_contains: String
+  answer_type_starts_with: String
+  answer_type_not_starts_with: String
+  answer_type_ends_with: String
+  answer_type_not_ends_with: String
   theme: String
   theme_not: String
   theme_in: [String!]
@@ -373,7 +373,7 @@ input QuestionUpdateDataInput {
   quiz: QuizUpdateManyInput
   title: String
   right_answer: QuestionUpdateright_answerInput
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -382,7 +382,7 @@ input QuestionUpdateInput {
   quiz: QuizUpdateManyInput
   title: String
   right_answer: QuestionUpdateright_answerInput
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -390,7 +390,7 @@ input QuestionUpdateInput {
 input QuestionUpdateManyDataInput {
   title: String
   right_answer: QuestionUpdateright_answerInput
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -410,7 +410,7 @@ input QuestionUpdateManyInput {
 input QuestionUpdateManyMutationInput {
   title: String
   right_answer: QuestionUpdateright_answerInput
-  anwer_type: String
+  answer_type: String
   theme: String
   language_code: String
 }
@@ -467,20 +467,20 @@ input QuestionWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  anwer_type: String
-  anwer_type_not: String
-  anwer_type_in: [String!]
-  anwer_type_not_in: [String!]
-  anwer_type_lt: String
-  anwer_type_lte: String
-  anwer_type_gt: String
-  anwer_type_gte: String
-  anwer_type_contains: String
-  anwer_type_not_contains: String
-  anwer_type_starts_with: String
-  anwer_type_not_starts_with: String
-  anwer_type_ends_with: String
-  anwer_type_not_ends_with: String
+  answer_type: String
+  answer_type_not: String
+  answer_type_in: [String!]
+  answer_type_not_in: [String!]
+  answer_type_lt: String
+  answer_type_lte: String
+  answer_type_gt: String
+  answer_type_gte: String
+  answer_type_contains: String
+  answer_type_not_contains: String
+  answer_type_starts_with: String
+  answer_type_not_starts_with: String
+  answer_type_ends_with: String
+  answer_type_not_ends_with: String
   theme: String
   theme_not: String
   theme_in: [String!]

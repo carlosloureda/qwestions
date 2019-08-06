@@ -266,8 +266,8 @@ export type QuestionOrderByInput =
   | "id_DESC"
   | "title_ASC"
   | "title_DESC"
-  | "anwer_type_ASC"
-  | "anwer_type_DESC"
+  | "answer_type_ASC"
+  | "answer_type_DESC"
   | "theme_ASC"
   | "theme_DESC"
   | "language_code_ASC"
@@ -387,20 +387,20 @@ export interface QuestionWhereInput {
   title_not_starts_with?: Maybe<String>;
   title_ends_with?: Maybe<String>;
   title_not_ends_with?: Maybe<String>;
-  anwer_type?: Maybe<String>;
-  anwer_type_not?: Maybe<String>;
-  anwer_type_in?: Maybe<String[] | String>;
-  anwer_type_not_in?: Maybe<String[] | String>;
-  anwer_type_lt?: Maybe<String>;
-  anwer_type_lte?: Maybe<String>;
-  anwer_type_gt?: Maybe<String>;
-  anwer_type_gte?: Maybe<String>;
-  anwer_type_contains?: Maybe<String>;
-  anwer_type_not_contains?: Maybe<String>;
-  anwer_type_starts_with?: Maybe<String>;
-  anwer_type_not_starts_with?: Maybe<String>;
-  anwer_type_ends_with?: Maybe<String>;
-  anwer_type_not_ends_with?: Maybe<String>;
+  answer_type?: Maybe<String>;
+  answer_type_not?: Maybe<String>;
+  answer_type_in?: Maybe<String[] | String>;
+  answer_type_not_in?: Maybe<String[] | String>;
+  answer_type_lt?: Maybe<String>;
+  answer_type_lte?: Maybe<String>;
+  answer_type_gt?: Maybe<String>;
+  answer_type_gte?: Maybe<String>;
+  answer_type_contains?: Maybe<String>;
+  answer_type_not_contains?: Maybe<String>;
+  answer_type_starts_with?: Maybe<String>;
+  answer_type_not_starts_with?: Maybe<String>;
+  answer_type_ends_with?: Maybe<String>;
+  answer_type_not_ends_with?: Maybe<String>;
   theme?: Maybe<String>;
   theme_not?: Maybe<String>;
   theme_in?: Maybe<String[] | String>;
@@ -546,7 +546,7 @@ export interface QuestionCreateInput {
   quiz?: Maybe<QuizCreateManyInput>;
   title: String;
   right_answer?: Maybe<QuestionCreateright_answerInput>;
-  anwer_type?: Maybe<String>;
+  answer_type?: Maybe<String>;
   theme?: Maybe<String>;
   language_code?: Maybe<String>;
 }
@@ -753,7 +753,7 @@ export interface QuestionUpdateDataInput {
   quiz?: Maybe<QuizUpdateManyInput>;
   title?: Maybe<String>;
   right_answer?: Maybe<QuestionUpdateright_answerInput>;
-  anwer_type?: Maybe<String>;
+  answer_type?: Maybe<String>;
   theme?: Maybe<String>;
   language_code?: Maybe<String>;
 }
@@ -797,20 +797,20 @@ export interface QuestionScalarWhereInput {
   title_not_starts_with?: Maybe<String>;
   title_ends_with?: Maybe<String>;
   title_not_ends_with?: Maybe<String>;
-  anwer_type?: Maybe<String>;
-  anwer_type_not?: Maybe<String>;
-  anwer_type_in?: Maybe<String[] | String>;
-  anwer_type_not_in?: Maybe<String[] | String>;
-  anwer_type_lt?: Maybe<String>;
-  anwer_type_lte?: Maybe<String>;
-  anwer_type_gt?: Maybe<String>;
-  anwer_type_gte?: Maybe<String>;
-  anwer_type_contains?: Maybe<String>;
-  anwer_type_not_contains?: Maybe<String>;
-  anwer_type_starts_with?: Maybe<String>;
-  anwer_type_not_starts_with?: Maybe<String>;
-  anwer_type_ends_with?: Maybe<String>;
-  anwer_type_not_ends_with?: Maybe<String>;
+  answer_type?: Maybe<String>;
+  answer_type_not?: Maybe<String>;
+  answer_type_in?: Maybe<String[] | String>;
+  answer_type_not_in?: Maybe<String[] | String>;
+  answer_type_lt?: Maybe<String>;
+  answer_type_lte?: Maybe<String>;
+  answer_type_gt?: Maybe<String>;
+  answer_type_gte?: Maybe<String>;
+  answer_type_contains?: Maybe<String>;
+  answer_type_not_contains?: Maybe<String>;
+  answer_type_starts_with?: Maybe<String>;
+  answer_type_not_starts_with?: Maybe<String>;
+  answer_type_ends_with?: Maybe<String>;
+  answer_type_not_ends_with?: Maybe<String>;
   theme?: Maybe<String>;
   theme_not?: Maybe<String>;
   theme_in?: Maybe<String[] | String>;
@@ -852,7 +852,7 @@ export interface QuestionUpdateManyWithWhereNestedInput {
 export interface QuestionUpdateManyDataInput {
   title?: Maybe<String>;
   right_answer?: Maybe<QuestionUpdateright_answerInput>;
-  anwer_type?: Maybe<String>;
+  answer_type?: Maybe<String>;
   theme?: Maybe<String>;
   language_code?: Maybe<String>;
 }
@@ -870,7 +870,7 @@ export interface QuestionUpdateInput {
   quiz?: Maybe<QuizUpdateManyInput>;
   title?: Maybe<String>;
   right_answer?: Maybe<QuestionUpdateright_answerInput>;
-  anwer_type?: Maybe<String>;
+  answer_type?: Maybe<String>;
   theme?: Maybe<String>;
   language_code?: Maybe<String>;
 }
@@ -878,7 +878,7 @@ export interface QuestionUpdateInput {
 export interface QuestionUpdateManyMutationInput {
   title?: Maybe<String>;
   right_answer?: Maybe<QuestionUpdateright_answerInput>;
-  anwer_type?: Maybe<String>;
+  answer_type?: Maybe<String>;
   theme?: Maybe<String>;
   language_code?: Maybe<String>;
 }
@@ -1140,7 +1140,7 @@ export interface Question {
   id: ID_Output;
   title: String;
   right_answer: String[];
-  anwer_type?: String;
+  answer_type?: String;
   theme?: String;
   language_code?: String;
 }
@@ -1158,7 +1158,7 @@ export interface QuestionPromise extends Promise<Question>, Fragmentable {
   }) => T;
   title: () => Promise<String>;
   right_answer: () => Promise<String[]>;
-  anwer_type: () => Promise<String>;
+  answer_type: () => Promise<String>;
   theme: () => Promise<String>;
   language_code: () => Promise<String>;
 }
@@ -1178,7 +1178,7 @@ export interface QuestionSubscription
   }) => T;
   title: () => Promise<AsyncIterator<String>>;
   right_answer: () => Promise<AsyncIterator<String[]>>;
-  anwer_type: () => Promise<AsyncIterator<String>>;
+  answer_type: () => Promise<AsyncIterator<String>>;
   theme: () => Promise<AsyncIterator<String>>;
   language_code: () => Promise<AsyncIterator<String>>;
 }
@@ -1198,7 +1198,7 @@ export interface QuestionNullablePromise
   }) => T;
   title: () => Promise<String>;
   right_answer: () => Promise<String[]>;
-  anwer_type: () => Promise<String>;
+  answer_type: () => Promise<String>;
   theme: () => Promise<String>;
   language_code: () => Promise<String>;
 }
@@ -1666,7 +1666,7 @@ export interface QuestionPreviousValues {
   id: ID_Output;
   title: String;
   right_answer: String[];
-  anwer_type?: String;
+  answer_type?: String;
   theme?: String;
   language_code?: String;
 }
@@ -1677,7 +1677,7 @@ export interface QuestionPreviousValuesPromise
   id: () => Promise<ID_Output>;
   title: () => Promise<String>;
   right_answer: () => Promise<String[]>;
-  anwer_type: () => Promise<String>;
+  answer_type: () => Promise<String>;
   theme: () => Promise<String>;
   language_code: () => Promise<String>;
 }
@@ -1688,7 +1688,7 @@ export interface QuestionPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
   right_answer: () => Promise<AsyncIterator<String[]>>;
-  anwer_type: () => Promise<AsyncIterator<String>>;
+  answer_type: () => Promise<AsyncIterator<String>>;
   theme: () => Promise<AsyncIterator<String>>;
   language_code: () => Promise<AsyncIterator<String>>;
 }

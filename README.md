@@ -22,3 +22,5 @@ mutation {
 }
 
 ```
+
+On `server` run `node src/index.js` to run things
