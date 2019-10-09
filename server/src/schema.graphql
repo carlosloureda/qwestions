@@ -1,0 +1,31 @@
+# import User from './generated/prisma.graphql'
+# import Quiz from './generated/prisma.graphql'
+# import Submission from './generated/prisma.graphql'
+# import Question from './generated/prisma.graphql'
+# import Answer from './generated/prisma.graphql'
+
+type Query {
+  user(id: ID!): User
+  question(id: ID!): Question
+  quiz(id: ID!): Quiz
+  answer(id: ID!): Answer
+  submission(id: ID!): Submission
+  quizzes: [Quiz]
+  questions: [Question]
+}
+
+type Mutation {
+  createQuiz(title: String!): Quiz
+  createQuestion(
+    title: String!
+    # right_answer: [String]!
+    answer_type: String
+    theme: String
+  ): Question
+  #   createAnswer(
+  #     answer: String
+  #     quiz: Quiz
+  #     user: User
+  #     question: Question
+  #   ): Answer
+}

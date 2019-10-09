@@ -1,0 +1,34 @@
+type User {
+  id: ID! @id (strategy: AUTO)
+  name: String!
+}
+
+type Quiz {
+  id: ID! @id (strategy: AUTO)
+  title: String!
+}
+
+type Submission {
+  id: ID! @id (strategy: AUTO)
+  quiz: [Quiz]! @scalarList(strategy: RELATION)
+  user: [User]! @scalarList(strategy: RELATION)
+}
+
+type Question {
+  id: ID! @id
+  quiz: [Quiz]! @scalarList(strategy: RELATION)
+  title: String!
+  right_answer: [String]! @scalarList(strategy: RELATION)
+  answer_type: String
+  theme: String
+  language_code: String
+}
+
+type Answer {
+  id: ID! @id
+  quiz: [Quiz]! @scalarList(strategy: RELATION)
+  user: [User]! @scalarList(strategy: RELATION)
+  question: [Question]! @scalarList(strategy: RELATION)
+  answer: [String]! @scalarList(strategy: RELATION)
+  is_valid: Boolean
+}
