@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 // import { withKnobs, object } from "@storybook/addon-knobs/react";
 
-import CodeAnswers from "./CodeAnswers";
+import CodeAnswerType from "./CodeAnswerType";
 
 export const task = {
   id: "1",
@@ -17,14 +17,14 @@ export const actions = {
   onThemeChange: action("onThemeChange")
 };
 
-storiesOf("CodeAnswers", module)
+storiesOf("CodeAnswerType", module)
   //   .addDecorator(withKnobs)
   // .addDecorator(story => <QuestionProvider >{story()}</QuestionProvider>)
-  .add("default", () => <CodeAnswers {...actions} />)
-  .add("theme (kuroir)", () => <CodeAnswers {...actions} theme="kuroir" />)
+  .add("default", () => <CodeAnswerType {...actions} />)
+  .add("theme (kuroir)", () => <CodeAnswerType {...actions} theme="kuroir" />)
   .add("coding language (javascript)", () => (
-    <CodeAnswers {...actions} language="javascript" />
+    <CodeAnswerType {...actions} language="javascript" />
   ))
   .add("theme & coding language", () => (
-    <CodeAnswers {...actions} theme="kuroir" language="javascript" />
+    <CodeAnswerType {...actions} theme="kuroir" language="javascript" />
   ));

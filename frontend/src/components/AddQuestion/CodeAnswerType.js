@@ -8,7 +8,12 @@ import Select from "@material-ui/core/Select";
 
 import PropTypes from "prop-types";
 
-const CodeAnswers = ({ theme, language, onLanguageChange, onThemeChange }) => {
+const CodeAnswerType = ({
+  theme,
+  language,
+  onLanguageChange,
+  onThemeChange
+}) => {
   const classes = useStyles();
 
   const inputLabel = React.useRef(null);
@@ -85,14 +90,14 @@ const CodeAnswers = ({ theme, language, onLanguageChange, onThemeChange }) => {
   );
 };
 
-CodeAnswers.propTypes = {
+CodeAnswerType.propTypes = {
   theme: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   onLanguageChange: PropTypes.func,
   onThemeChange: PropTypes.func
 };
 
-export default CodeAnswers;
+export default CodeAnswerType;
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -15,11 +15,11 @@ import { QuestionContext } from "../Context";
 
 // https://medium.com/@seantheurgel/react-hooks-as-state-management-usecontext-useeffect-usereducer-a75472a862fe
 
-// const QuestionPreview = React.lazy(() => import("./QuestionPreview"));
-// const CodeAnswers = React.lazy(() => import("./CodeAnswers"));
+const QuestionPreview = React.lazy(() => import("./QuestionPreview"));
+const CodeAnswerType = React.lazy(() => import("./CodeAnswerType"));
 
-import QuestionPreview from "./QuestionPreview";
-import CodeAnswers from "./CodeAnswers";
+// import QuestionPreview from "./QuestionPreview";
+// import CodeAnswerType from "./CodeAnswerType";
 
 const AddQuestion = () => {
   const classes = useStyles();
@@ -59,7 +59,7 @@ const AddQuestion = () => {
     dispatch({ type: "on_change_question", question });
 
   /**
-   * Events for CodeAnswers ...
+   * Events for CodeAnswerType ...
    */
 
   const onLanguageChange = lang => {
@@ -169,7 +169,7 @@ const AddQuestion = () => {
         )}
         {answered_types === "code" && (
           <Suspense fallback={<div>Loading Question preview ...</div>}>
-            <CodeAnswers
+            <CodeAnswerType
               theme={state.theme}
               language={state.codeLanguage}
               onLanguageChange={onLanguageChange}
