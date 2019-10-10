@@ -17,7 +17,7 @@ const QuestionPreview = ({
   answers_inputs
 }) => {
   const classes = useStyles();
-
+  console.log("inside QuestionPreview ... question: ", question);
   return (
     <div>
       <h2>Preview</h2>
@@ -67,12 +67,14 @@ QuestionPreview.propTypes = {
   question: PropTypes.string,
   theme: PropTypes.string,
   codeLanguage: PropTypes.string,
-  answers_inputs: PropTypes.shape({
-    answer: PropTypes.string.isRequired,
-    isValid: PropTypes.bool.isRequired,
-    saved: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired
-  })
+  answers_inputs: PropTypes.arrayOf(
+    PropTypes.shape({
+      answer: PropTypes.string.isRequired,
+      isValid: PropTypes.bool.isRequired,
+      saved: PropTypes.bool.isRequired,
+      id: PropTypes.number.isRequired
+    })
+  )
 };
 
 export default QuestionPreview;

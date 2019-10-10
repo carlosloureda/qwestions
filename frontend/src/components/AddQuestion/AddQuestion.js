@@ -17,8 +17,11 @@ const AddQuestion = () => {
 
   const addNewAnswerLine = () => dispatch({ type: "add_new_answer_input" });
 
-  const onChangeQuestion = (id, question) =>
+  const onChangeQuestion = (id, question) => {
+    console.log("Estamos escribiendo la question en el state");
     dispatch({ type: "on_change_question", question });
+    console.log("state: ", state);
+  };
 
   return (
     <div style={{ width: "50%" }}>
@@ -31,7 +34,7 @@ const AddQuestion = () => {
       />
       <AnswerType />
       <Suspense fallback={<div>Loading Question preview ...</div>}>
-        <QuestionPreview values={state} />
+        <QuestionPreview {...state} />
       </Suspense>
       {/*
         - Extras:

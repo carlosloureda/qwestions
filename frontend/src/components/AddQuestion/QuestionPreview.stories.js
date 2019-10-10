@@ -27,7 +27,7 @@ storiesOf("QuestionPreview", module)
   .add("Default", () => (
     <QuestionPreview
       answerType={object("answerType", "input")}
-      question={object("question", "a = {b:'2'}")}
+      question={object("question", "# Here the Markdown")}
       theme={object("theme", "monokai")}
       codeLanguage={object("codeLanguage", "python")}
       answers_inputs={answers_inputs}
