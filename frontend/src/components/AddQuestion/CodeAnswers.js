@@ -6,24 +6,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-import { QuestionContext } from "../Context";
+import PropTypes from "prop-types";
 
-const CodeAnswers = ({ initialState }) => {
+const CodeAnswers = ({ theme, language, onLanguageChange, onThemeChange }) => {
   const classes = useStyles();
-  const { state, dispatch } = React.useContext(QuestionContext);
-  const { theme, codeLanguage } = state;
+
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-
-  const onCodingLanguageChange = lang => {
-    dispatch({ type: "set_coding_language", lang });
-  };
-  const onThemeChange = theme => {
-    dispatch({ type: "set_theme", theme });
-  };
 
   const codingLanguageOptions = [
     "javascript",
@@ -60,8 +52,8 @@ const CodeAnswers = ({ initialState }) => {
           Coding language
         </InputLabel>
         <Select
-          value={codeLanguage}
-          onChange={e => onCodingLanguageChange(e.target.value)}
+          value={language}
+          onChange={e => onLanguageChange(e.target.value)}
           input={
             <OutlinedInput labelWidth={labelWidth} name="coding_languages" />
           }
@@ -92,6 +84,14 @@ const CodeAnswers = ({ initialState }) => {
     </React.Fragment>
   );
 };
+
+CodeAnswers.propTypes = {
+  theme: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  onLanguageChange: PropTypes.func,
+  onThemeChange: PropTypes.func
+};
+
 export default CodeAnswers;
 
 const useStyles = makeStyles(theme => ({
