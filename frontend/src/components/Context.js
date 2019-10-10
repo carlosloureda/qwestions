@@ -87,7 +87,7 @@ const reducer = (state, action) => {
 };
 const initialState = {
   question: "# Aquí va el Markdown",
-  answered_types: "", // POSIBLE_ANSWER_TYPES
+  answerType: "", // POSIBLE_ANSWER_TYPES
   answers_inputs: [
     { answer: "", isValid: false, saved: true, id: 1 },
     { answer: "", isValid: false, saved: true, id: 2 }

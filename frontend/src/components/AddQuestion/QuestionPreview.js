@@ -9,7 +9,7 @@ import CodeEditor from "../Editor/CodeEditor";
 
 const QuestionPreview = props => {
   const {
-    answered_types,
+    answerType,
     question,
     theme,
     codeLanguage,
@@ -17,7 +17,7 @@ const QuestionPreview = props => {
   } = props.values;
   const classes = useStyles();
 
-  console.log("answered_types: ", answered_types);
+  console.log("answerType: ", answerType);
   return (
     <div>
       <h2>Preview</h2>
@@ -30,7 +30,7 @@ const QuestionPreview = props => {
           />
         </div>
       </div>
-      {answered_types === "textarea" && (
+      {answerType === "textarea" && (
         // <div>Mostrar textarea</div>
         <TextField
           label="Answer"
@@ -40,13 +40,13 @@ const QuestionPreview = props => {
           disabled={true}
         />
       )}
-      {answered_types === "input" && (
+      {answerType === "input" && (
         <TextField label="Answer" type="text" value={""} disabled={true} />
       )}
-      {answered_types === "code" && (
+      {answerType === "code" && (
         <CodeEditor width={98} theme={theme} language={codeLanguage} />
       )}
-      {answered_types === "mutiple_choice" &&
+      {answerType === "mutiple_choice" &&
         answers_inputs.map((answer, index) => (
           <Button key={index} variant="contained" className={classes.button}>
             <span className={classes.buttonContent}>
