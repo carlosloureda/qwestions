@@ -4,20 +4,20 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
+import PropTypes from "prop-types";
+
 import CodeBlock from "../Editor/CodeBlock";
 import CodeEditor from "../Editor/CodeEditor";
 
-const QuestionPreview = props => {
-  const {
-    answerType,
-    question,
-    theme,
-    codeLanguage,
-    answers_inputs
-  } = props.values;
+const QuestionPreview = ({
+  answerType,
+  question,
+  theme,
+  codeLanguage,
+  answers_inputs
+}) => {
   const classes = useStyles();
 
-  console.log("answerType: ", answerType);
   return (
     <div>
       <h2>Preview</h2>
@@ -62,6 +62,21 @@ const QuestionPreview = props => {
   );
 };
 
+QuestionPreview.propTypes = {
+  answerType: PropTypes.string,
+  question: PropTypes.string,
+  theme: PropTypes.string,
+  codeLanguage: PropTypes.string,
+  answers_inputs: PropTypes.shape({
+    answer: PropTypes.string.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    saved: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired
+  })
+};
+
+export default QuestionPreview;
+
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
@@ -74,5 +89,3 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "flex-start"
   }
 }));
-
-export default QuestionPreview;

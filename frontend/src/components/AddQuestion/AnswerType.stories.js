@@ -5,13 +5,6 @@ import { withKnobs, object } from "@storybook/addon-knobs/react";
 
 import { PureAnswerType } from "./AnswerType";
 
-export const task = {
-  id: "1",
-  title: "Tarea de test",
-  state: "TASK_INBOX",
-  updatedAt: new Date(2018, 0, 1, 9, 0)
-};
-
 export const actions = {
   saveAnswer: action("saveAnswer"),
   onChangeCode: action("onChangeCode"),
