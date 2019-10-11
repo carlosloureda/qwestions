@@ -28,6 +28,8 @@ import "brace/theme/xcode";
 import "brace/theme/textmate";
 import "brace/theme/terminal";
 
+import PropTypes from "prop-types";
+
 const CodeEditor = ({
   placeholder,
   width,
@@ -56,7 +58,7 @@ const CodeEditor = ({
           theme={theme ? theme : "twilight"}
           onChange={onChange}
           name="brace-editor"
-          height={height ? `${height}%` : "300px"}
+          height={height ? `${height}px` : "300px"}
           width={width ? `${width}%` : "100%"}
           fontSize="20"
           editorProps={{ $blockScrolling: true }}
@@ -67,6 +69,21 @@ const CodeEditor = ({
   );
 };
 
+
+CodeEditor.propTypes = {
+  placeholder: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  theme: PropTypes.string,
+  language: PropTypes.string,
+  onChangeCode: PropTypes.func.isRequired
+  // id: PropTypes.string,
+};
+
+
+export default CodeEditor;
+
+
 const classes = {
   container: {
     display: "flex",
@@ -74,5 +91,3 @@ const classes = {
     // alignContent: "center"
   }
 };
-
-export default CodeEditor;
