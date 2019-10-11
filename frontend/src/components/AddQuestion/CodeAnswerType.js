@@ -57,7 +57,7 @@ const CodeAnswerType = ({
           Coding language
         </InputLabel>
         <Select
-          value={language}
+          value={language ? language : ""}
           onChange={e => onLanguageChange(e.target.value)}
           input={
             <OutlinedInput labelWidth={labelWidth} name="coding_languages" />
@@ -75,7 +75,7 @@ const CodeAnswerType = ({
           Themes
         </InputLabel>
         <Select
-          value={theme}
+          value={theme ? theme : ""}
           onChange={e => onThemeChange(e.target.value)}
           input={<OutlinedInput labelWidth={labelWidth} name="themes" />}
         >
@@ -91,10 +91,10 @@ const CodeAnswerType = ({
 };
 
 CodeAnswerType.propTypes = {
-  theme: PropTypes.string.isRequired,
-  language: PropTypes.string.isRequired,
-  onLanguageChange: PropTypes.func,
-  onThemeChange: PropTypes.func
+  theme: PropTypes.string,
+  language: PropTypes.string,
+  onLanguageChange: PropTypes.func.isRequired,
+  onThemeChange: PropTypes.func.isRequired
 };
 
 export default CodeAnswerType;

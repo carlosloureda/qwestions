@@ -9,9 +9,7 @@ const req = requireContext("../src/components", true, /\.stories.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => {
-    console.log("Filename: ", filename);
     return req(filename);
   });
 }
-console.log("HEOEOOEOOEOE");
 configure(loadStories, module);
