@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, object } from "@storybook/addon-knobs/react";
+import { withKnobs, text, object } from "@storybook/addon-knobs/react";
 
 import QuestionPreview from "./QuestionPreview";
 
@@ -26,10 +26,10 @@ storiesOf("QuestionPreview", module)
   .addDecorator(withKnobs)
   .add("Default", () => (
     <QuestionPreview
-      answerType={object("answerType", "input")}
-      question={object("question", "# Here the Markdown")}
-      theme={object("theme", "monokai")}
-      codeLanguage={object("codeLanguage", "python")}
-      answers_inputs={answers_inputs}
+      answerType={text("answerType", "input")}
+      question={text("question", "# Here the Markdown")}
+      theme={text("theme", "monokai")}
+      codeLanguage={text("codeLanguage", "python")}
+      answers_inputs={object("answers_inputs", answers_inputs)}
     />
   ));

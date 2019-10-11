@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, object } from "@storybook/addon-knobs/react";
+import { withKnobs, text, object } from "@storybook/addon-knobs/react";
 
 import { PureAnswerType } from "./AnswerType";
 
@@ -26,37 +26,37 @@ storiesOf("PureAnswerType", module)
   .addDecorator(withKnobs)
   .add("'Code' Answer Type", () => (
     <PureAnswerType
-      answerType={object("answerType", "code")}
+      answerType={text("answerType", "code")}
       answers_inputs={object("answers_inputs", answers_inputs)}
-      theme={object("theme", "monokai")}
-      language={object("language", "mysql")}
+      theme={text("theme", "monokai")}
+      language={text("language", "mysql")}
       {...actions}
     />
   ))
   .add("'Multiple Choice' Answer Type", () => (
     <PureAnswerType
-      answerType={object("answerType", "mutiple_choice")}
+      answerType={text("answerType", "mutiple_choice")}
       answers_inputs={object("answers_inputs", answers_inputs)}
-      theme={object("theme", "monokai")}
-      language={object("language", "mysql")}
+      theme={text("theme", "monokai")}
+      language={text("language", "mysql")}
       {...actions}
     />
   ))
   .add("'Input' Answer Type", () => (
     <PureAnswerType
-      answerType={object("answerType", "input")}
+      answerType={text("answerType", "input")}
       answers_inputs={object("answers_inputs", answers_inputs)}
-      theme={object("theme", "monokai")}
-      language={object("language", "mysql")}
+      theme={text("theme", "monokai")}
+      language={text("language", "mysql")}
       {...actions}
     />
   ))
   .add("'Textarea' Answer Type", () => (
     <PureAnswerType
-      answerType={object("answerType", "textarea")}
+      answerType={text("answerType", "textarea")}
       answers_inputs={object("answers_inputs", answers_inputs)}
-      theme={object("theme", "monokai")}
-      language={object("language", "mysql")}
+      theme={text("theme", "monokai")}
+      language={text("language", "mysql")}
       {...actions}
     />
   ));
