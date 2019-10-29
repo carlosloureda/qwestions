@@ -15,12 +15,44 @@ const AddQuestion = () => {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(QuestionContext);
 
-  const addNewAnswerLine = () => dispatch({ type: "add_new_answer_input" });
-
   const onChangeQuestion = (id, question) => {
     console.log("Estamos escribiendo la question en el state");
     dispatch({ type: "on_change_question", question });
     console.log("state: ", state);
+  };
+
+  // const { state, dispatch } = React.useContext(QuestionContext);
+  const { answerType, answers_inputs, theme, codeLanguage } = state;
+
+  function handleAnswerTypeChange(event) {
+    dispatch({
+      type: "update_answer_types",
+      field: event.target.name,
+      value: event.target.value
+    });
+  }
+  const showAnswerInputEditor = index =>
+    dispatch({ type: "show_answer_editor", index });
+
+  const toggleAnswerInputValidity = index =>
+    dispatch({ type: "toggle_answer_validity_input", index });
+
+  // TODO: call API
+  const saveAnswer = index => dispatch({ type: "save_answer", index });
+
+  // TODO: call API
+  const deleteAnswer = index => dispatch({ type: "delete_answer", index });
+
+  const onChangeCode = (index, text) =>
+    dispatch({ type: "on_change_answer", index, text });
+
+  const addNewAnswerLine = () => dispatch({ type: "add_new_answer_input" });
+
+  const onLanguageChange = lang => {
+    dispatch({ type: "set_coding_language", lang });
+  };
+  const onThemeChange = theme => {
+    dispatch({ type: "set_theme", theme });
   };
 
   return (
@@ -32,7 +64,21 @@ const AddQuestion = () => {
         width={98}
         onChangeCode={onChangeQuestion}
       />
-      <AnswerType />
+      <AnswerType
+        answerType={answerType}
+        handleAnswerTypeChange={handleAnswerTypeChange}
+        answers_inputs={answers_inputs}
+        onChangeCode={onChangeCode}
+        showAnswerInputEditor={showAnswerInputEditor}
+        toggleAnswerInputValidity={toggleAnswerInputValidity}
+        saveAnswer={saveAnswer}
+        deleteAnswer={deleteAnswer}
+        addNewAnswerLine={addNewAnswerLine}
+        onLanguageChange={onLanguageChange}
+        onThemeChange={onThemeChange}
+        theme={theme}
+        language={codeLanguage}
+      />
       <Suspense fallback={<div>Loading Question preview ...</div>}>
         <QuestionPreview {...state} />
       </Suspense>

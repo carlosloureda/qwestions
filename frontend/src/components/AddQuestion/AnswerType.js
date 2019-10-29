@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 
+import PropTypes from "prop-types";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -12,66 +13,10 @@ import Button from "@material-ui/core/Button";
 import CodeEditor from "../Editor/CodeEditor";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { QuestionContext } from "../Context";
 
 const CodeAnswerType = React.lazy(() => import("./CodeAnswerType"));
 
-const AnswerType = () => {
-  const { state, dispatch } = React.useContext(QuestionContext);
-  const { answerType, answers_inputs, theme, codeLanguage } = state;
-
-  function handleAnswerTypeChange(event) {
-    dispatch({
-      type: "update_answer_types",
-      field: event.target.name,
-      value: event.target.value
-    });
-  }
-  const showAnswerInputEditor = index =>
-    dispatch({ type: "show_answer_editor", index });
-
-  const toggleAnswerInputValidity = index =>
-    dispatch({ type: "toggle_answer_validity_input", index });
-
-  // TODO: call API
-  const saveAnswer = index => dispatch({ type: "save_answer", index });
-
-  // TODO: call API
-  const deleteAnswer = index => dispatch({ type: "delete_answer", index });
-
-  const onChangeCode = (index, text) =>
-    dispatch({ type: "on_change_answer", index, text });
-
-  const addNewAnswerLine = () => dispatch({ type: "add_new_answer_input" });
-
-  const onLanguageChange = lang => {
-    dispatch({ type: "set_coding_language", lang });
-  };
-  const onThemeChange = theme => {
-    dispatch({ type: "set_theme", theme });
-  };
-
-  return (
-    //   TODO: Think on better splitting for the items
-    <PureAnswerType
-      answerType={answerType}
-      handleAnswerTypeChange={handleAnswerTypeChange}
-      answers_inputs={answers_inputs}
-      onChangeCode={onChangeCode}
-      showAnswerInputEditor={showAnswerInputEditor}
-      toggleAnswerInputValidity={toggleAnswerInputValidity}
-      saveAnswer={saveAnswer}
-      deleteAnswer={deleteAnswer}
-      addNewAnswerLine={addNewAnswerLine}
-      onLanguageChange={onLanguageChange}
-      onThemeChange={onThemeChange}
-      theme={theme}
-      language={codeLanguage}
-    />
-  );
-};
-
-export const PureAnswerType = ({
+const AnswerType = ({
   answerType,
   handleAnswerTypeChange,
   answers_inputs,
@@ -196,6 +141,27 @@ export const PureAnswerType = ({
       </div>
     </>
   );
+};
+
+AnswerType.propTypes = {
+  answerType: PropTypes.string,
+  answers_inputs: PropTypes.array,
+  theme: PropTypes.string,
+  language: PropTypes.string,
+  saveAnswer: PropTypes.func.isRequired,
+  onChangeCode: PropTypes.func.isRequired,
+  showAnswerInputEditor: PropTypes.func.isRequired,
+  toggleAnswerInputValidity: PropTypes.func.isRequired,
+  deleteAnswer: PropTypes.func.isRequired,
+  addNewAnswerLine: PropTypes.func.isRequired,
+  onLanguageChange: PropTypes.func.isRequired,
+  onThemeChange: PropTypes.func.isRequired,
+  handleAnswerTypeChange: PropTypes.func.isRequired
+};
+AnswerType.defaultProps = {
+  answerType: "input",
+  theme: "monokai",
+  language: "javascript"
 };
 
 export default AnswerType;

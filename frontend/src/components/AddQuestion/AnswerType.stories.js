@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, text, object } from "@storybook/addon-knobs/react";
 
-import { PureAnswerType } from "./AnswerType";
+import AnswerType from "./AnswerType";
 
 export const actions = {
   saveAnswer: action("saveAnswer"),
@@ -22,10 +22,19 @@ const answers_inputs = [
   { answer: "", isValid: false, saved: true, id: 2 }
 ];
 
-storiesOf("PureAnswerType", module)
+storiesOf("AnswerType", module)
   .addDecorator(withKnobs)
+  .add("'Default' Answer Type", () => (
+    <AnswerType
+      answerType={text("answerType", undefined)}
+      answers_inputs={object("answers_inputs", answers_inputs)}
+      theme={text("theme", undefined)}
+      language={text("language", undefined)}
+      {...actions}
+    />
+  ))
   .add("'Code' Answer Type", () => (
-    <PureAnswerType
+    <AnswerType
       answerType={text("answerType", "code")}
       answers_inputs={object("answers_inputs", answers_inputs)}
       theme={text("theme", "monokai")}
@@ -34,7 +43,7 @@ storiesOf("PureAnswerType", module)
     />
   ))
   .add("'Multiple Choice' Answer Type", () => (
-    <PureAnswerType
+    <AnswerType
       answerType={text("answerType", "mutiple_choice")}
       answers_inputs={object("answers_inputs", answers_inputs)}
       theme={text("theme", "monokai")}
@@ -43,7 +52,7 @@ storiesOf("PureAnswerType", module)
     />
   ))
   .add("'Input' Answer Type", () => (
-    <PureAnswerType
+    <AnswerType
       answerType={text("answerType", "input")}
       answers_inputs={object("answers_inputs", answers_inputs)}
       theme={text("theme", "monokai")}
@@ -52,7 +61,7 @@ storiesOf("PureAnswerType", module)
     />
   ))
   .add("'Textarea' Answer Type", () => (
-    <PureAnswerType
+    <AnswerType
       answerType={text("answerType", "textarea")}
       answers_inputs={object("answers_inputs", answers_inputs)}
       theme={text("theme", "monokai")}
