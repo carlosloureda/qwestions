@@ -69,20 +69,17 @@ const CodeEditor = ({
   );
 };
 
-
 CodeEditor.propTypes = {
   placeholder: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   theme: PropTypes.string,
   language: PropTypes.string,
-  onChangeCode: PropTypes.func.isRequired
+  onChangeCode: PropTypes.func
   // id: PropTypes.string,
 };
 
-
 export default CodeEditor;
-
 
 const classes = {
   container: {

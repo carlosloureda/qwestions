@@ -14,6 +14,7 @@ const QuestionPreview = React.lazy(() => import("./QuestionPreview"));
 const AddQuestion = () => {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(QuestionContext);
+  console.log("state: ", state);
 
   const onChangeQuestion = (id, question) => {
     console.log("Estamos escribiendo la question en el state");
