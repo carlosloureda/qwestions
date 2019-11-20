@@ -43,6 +43,11 @@ const Header = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    &:hover {
+      overflow: visible;
+      white-space: normal;
+      height: auto;
+    }
   }
 `;
 

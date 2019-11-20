@@ -58,7 +58,7 @@ const Tooltip = ({ message, position = "top", children }) => {
   const [displayTooltip, toggleDisplayTooltip] = React.useState(true);
 
   return (
-    <S.ToolTip onMouseLeave={() => toggleDisplayTooltip(false)}>
+    <S.ToolTip onMouseLeave={() => toggleDisplayTooltip(true)}>
       {displayTooltip && (
         // <S.ToolTipBubble position={position}>
         // TODO: move the tooltip-${position} into sytled component
