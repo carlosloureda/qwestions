@@ -55,10 +55,10 @@ S.ToolTipBubble = styled.span`
 `;
 
 const Tooltip = ({ message, position = "top", children }) => {
-  const [displayTooltip, toggleDisplayTooltip] = React.useState(true);
+  const [displayTooltip, toggleDisplayTooltip] = React.useState(false);
 
   return (
-    <S.ToolTip onMouseLeave={() => toggleDisplayTooltip(true)}>
+    <S.ToolTip onMouseLeave={() => toggleDisplayTooltip(false)}>
       {displayTooltip && (
         // <S.ToolTipBubble position={position}>
         // TODO: move the tooltip-${position} into sytled component

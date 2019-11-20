@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Submissions = ({ total }) => {
   return (
@@ -56,16 +57,19 @@ class QuizzeItem extends PureComponent {
     const { quiz } = this.props;
     if (!quiz || !quiz.title) return null;
     return (
-      <QuizzeItemWrapper>
-        <Header>
-          {/* TODO: Add overflow */}
-          <h1>{quiz.title}</h1>
-        </Header>
-        {/* TODO: background overview*/}
-        <Footer>
-          <Submissions total={quiz.total_submissions} />
-        </Footer>
-      </QuizzeItemWrapper>
+      // TODO: set the {quizId}
+      <Link to="/quizzes/:quizId" style={{ textDecoration: "none" }}>
+        <QuizzeItemWrapper>
+          <Header>
+            {/* TODO: Add overflow */}
+            <h1>{quiz.title}</h1>
+          </Header>
+          {/* TODO: background overview*/}
+          <Footer>
+            <Submissions total={quiz.total_submissions} />
+          </Footer>
+        </QuizzeItemWrapper>
+      </Link>
     );
   }
 }
