@@ -11,26 +11,37 @@ import PropTypes from "prop-types";
 import NewQuizItem from "./components/NewQuizItem";
 import QuizItem from "./components/QuizItem";
 
-const Wrapper = styled.div`
+const S = {};
+
+S.Wrapper = styled.div`
+  background-color: #1c2022;
+`;
+S.QuizzList = styled.div`
   /* background-color: #1c2022; */
-  display: "flex";
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  padding: 2%;
+  margin: 1px auto;
 `;
 
 // TIP: For seeing mocked quizzes go to the storybook of this component
 const PureQuizzes = React.memo(({ quizzes, setQuizzes }) => {
   return (
-    <Wrapper>
+    <S.Wrapper>
       <h1>Quizzes</h1>
       {/* TODO: Filter and Search */}
       <button>Search</button>
       <button>Sort</button>
-      <div>
+      <S.QuizzList>
         <NewQuizItem />
         {Object.values(quizzes).map(quiz => (
           <QuizItem key={quiz.id} quiz={quiz} />
         ))}
-      </div>
-    </Wrapper>
+      </S.QuizzList>
+    </S.Wrapper>
   );
 });
 PureQuizzes.propTypes = {

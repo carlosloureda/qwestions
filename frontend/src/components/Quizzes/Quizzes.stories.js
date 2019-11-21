@@ -31,7 +31,22 @@ export const quizzes_mocked = {
     id: 5,
     title: "Final Exam",
     total_submissions: 5
+  },
+  6: {
+    id: 6,
+    title: "Hooks Quiz",
+    total_submissions: 4
+  },
+  7: {
+    id: 7,
+    title: "Testing Questions",
+    total_submissions: 4
   }
+  // 8: {
+  //   id: 8,
+  //   title: "Final Exam",
+  //   total_submissions: 5
+  // }
 };
 
 storiesOf("Quizzes", module)

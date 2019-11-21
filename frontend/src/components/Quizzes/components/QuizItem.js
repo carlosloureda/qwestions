@@ -19,9 +19,12 @@ const Submissions = ({ total }) => {
 const QuizzeItemWrapper = styled.div`
   width: 25%;
   height: 250px;
-  min-width: 250px;
+  min-width: 240px;
+  max-width: 240px;
   background-color: #f0f0f0;
-  margin: 5%;
+  /* border: 20px solid blue; */
+  margin-left: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,11 +42,13 @@ const Header = styled.div`
   /* display: flex; */
   background-color: rgb(36, 40, 42);
   color: #f0f0f0;
-  padding-left: 2em;
+
+  /* padding-left: 2em; */
   & h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0px;
     &:hover {
       overflow: visible;
       white-space: normal;

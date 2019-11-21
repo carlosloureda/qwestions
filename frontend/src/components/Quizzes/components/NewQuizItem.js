@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 
 const QuizzeItemWrapper = styled.div`
   width: 25%;
-  height: 250px;
-  min-width: 250px;
+  height: 240px;
+  min-width: 230px;
+  max-width: 230px;
   background-color: lightgray;
-  /* margin: 5%; */
+  margin-left: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
